@@ -1,0 +1,10 @@
+body {
+  padding-top: 70px;
+}
+.signin {
+  background-image: url(../img/cup.jpg);
+  background-position:center top;
+  background-repeat:no-repeat;
+  -moz-background-size:cover;
+  background-size:cover;
+}

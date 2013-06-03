@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Confederations2013</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+
+<% if request.path_info == user_session_path %>
+<body class="signin">
+<% else %>
+<body>
+<% end %>
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="../">コンフェデ杯2013</a>
+      <div class="nav-collapse collapse" id="main-menu">
+        <ul class="nav" id="main-menu-left">
+          <li><a href="<%=user_root_path%>">ダッシュボード</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">予想する！<b class="caret"></b></a>
+            <ul class="dropdown-menu" id="swatch-menu">
+              <li><%= link_to 'パート１：リーグ戦を予想', part_one_predicts_path %></li>
+              <li><%= link_to 'パート２：決勝トーナメント進出を予想', '' %></li>
+              <li><%= link_to 'パート３：優勝・準優勝・３位を予想', '' %></li>
+            </ul>
+          </li>
+          <li><a href="<%=user_root_path%>">こんな情報ありまっせ</a></li>
+        </ul>
+        <% if current_user %>
+        <ul class="nav pull-right" id="main-menu-right">
+          <li>
+          </li>
+          <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=current_user.name%><b class="caret"></b></a>
+          <ul class="dropdown-menu" id="swatch-menu">
+            <li><a href="../default/">Default</a></li>
+            <li class="divider"></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, :method => :delete %></li>
+          </ul>
+          </li>
+        </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="span">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

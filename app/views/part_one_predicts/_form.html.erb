@@ -1,0 +1,29 @@
+<%= form_for(@part_one_predict) do |f| %>
+  <% if @part_one_predict.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@part_one_predict.errors.count, "error") %> prohibited this part_one_predict from being saved:</h2>
+
+      <ul>
+      <% @part_one_predict.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :game_no %><br />
+    <%= f.number_field :game_no %>
+  </div>
+  <div class="field">
+    <%= f.label :score_a %><br />
+    <%= f.number_field :score_a %>
+  </div>
+  <div class="field">
+    <%= f.label :score_b %><br />
+    <%= f.number_field :score_b %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

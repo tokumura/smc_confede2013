@@ -1,0 +1,2 @@
+module PartOnePredictsHelper
+end
