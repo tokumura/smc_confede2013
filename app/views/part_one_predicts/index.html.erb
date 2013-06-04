@@ -1,46 +1,36 @@
 <div class="span12">
-  <h2>予想パート１</h2>
-  <br/>
+  <%=form_tag(regist_part_one_predicts_path) do |fm| %>
 
-  <% @part_one_predicts.each do |pop| %>
-    <% m = Match.find_by_game_no(pop.game_no) %>
-    <%#form_for() do |fm|%>
-      <div style="">
-        <h4>
-          <img src="img/<%=m.flag_a%>.jpg" style="widih:80px; height:60px">　
-          <%= m.team_a %> <input type="number" style="width:50px;" value="<%=pop.score_a%>">
-           VS 
-          <input type="number" style="width:50px;" value="<%=pop.score_b%>"> <%= m.team_b %>　
-          <img src="img/<%=m.flag_b%>.jpg" style="widih:80px; height:60px">
-        </h4>
+    <div class="row">
+      <div class="span6">
+        <h2>予想パート１</h2>
       </div>
-    <%# end %>
+      <div class="span6" align="right">
+        <%=submit_tag 'これで勝負する！', :class => 'btn btn-info' %>
+      </div>
+    </div>
     <br/>
+
+    <table class="table">
+    <% @part_one_predicts.each_with_index do |pop, i| %>
+      <% m = Match.find_by_game_no(pop.game_no) %>
+      <%=fields_for pop do |p| %>
+        <tr>
+          <td style="vertical-align:middle;"><td>
+          <td><img src="img/<%=m.flag_a%>.jpg" style="widih:40px; height:30px"></td>
+          <td style="vertical-align:middle;"><h4><%= m.team_a %></h4></td>
+          <td style="vertical-align:middle;">
+            <%=p.select :score_a, @points, {}, :index => i, :style => "width:70px;" %>　ー　
+            <%=p.select :score_b, @points, {}, :index => i, :style => "width:70px;" %>
+          </td>
+          <td style="vertical-align:middle;"><h4><%= m.team_b %></h4></td>
+          <td><img src="img/<%=m.flag_b%>.jpg" style="widih:40px; height:30px"></td>
+        </tr>
+        <%=p.hidden_field :game_no, {:index => i} %>
+      <% end %>
+    <% end %>
+    </table>
+
   <% end %>
 
-  <table>
-    <tr>
-      <th>Game no</th>
-      <th>Score a</th>
-      <th>Score b</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-
-  <% @part_one_predicts.each do |part_one_predict| %>
-    <tr>
-      <td><%= part_one_predict.game_no %></td>
-      <td><%= part_one_predict.score_a %></td>
-      <td><%= part_one_predict.score_b %></td>
-      <td><%= link_to 'Show', part_one_predict %></td>
-      <td><%= link_to 'Edit', edit_part_one_predict_path(part_one_predict) %></td>
-      <td><%= link_to 'Destroy', part_one_predict, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-  </table>
-
-  <br />
-
-  <%= link_to 'New Part one predict', new_part_one_predict_path %>
 </div>

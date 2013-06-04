@@ -11,6 +11,8 @@ Confederations2013::Application.routes.draw do
   resources :part_one_predicts do
     collection do 
       get :init
+      get :initall
+      post :regist
     end
   end
   resources :matches

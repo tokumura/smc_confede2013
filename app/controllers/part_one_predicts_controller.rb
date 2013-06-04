@@ -4,6 +4,7 @@ class PartOnePredictsController < ApplicationController
   def index
     @matches = Match.all
     @part_one_predicts = PartOnePredict.find_all_by_user_id(current_user.id)
+    @points = (0..10).to_a
 
     respond_to do |format|
       format.html # index.html.erb
@@ -11,7 +12,34 @@ class PartOnePredictsController < ApplicationController
     end
   end
 
+  def regist
+    predicts = params[:part_one_predict]
+    PartOnePredict.destroy_all(["user_id = ?", current_user.id.to_s])
+    user = User.find(current_user.id)
+    predicts.each_with_index do |p, j|
+      pop = user.part_one_predict.build
+      pop.game_no = p[1][:game_no]
+      pop.score_a = p[1][:score_a]
+      pop.score_b = p[1][:score_b]
+      pop.save
+    end
+    redirect_to part_one_predicts_path
+  end
+
   def init
+    PartOnePredict.destroy_all(["user_id = ?", current_user.id.to_s])
+    user = User.find(current_user.id)
+    (1..12).each do |p|
+      pop = user.part_one_predict.build
+      pop.game_no = p 
+      pop.score_a = "0"
+      pop.score_b = "0"
+      pop.save
+    end
+    redirect_to part_one_predicts_path
+  end
+
+  def initall
     PartOnePredict.destroy_all
     users = User.all
     users.each do |u|
