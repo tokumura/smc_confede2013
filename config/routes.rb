@@ -15,6 +15,14 @@ Confederations2013::Application.routes.draw do
       post :regist
     end
   end
+
+  resources :part_two_predicts do
+    collection do 
+      get :init
+      get :initall
+    end
+  end
+
   resources :matches
 
   # The priority is based upon order of creation:

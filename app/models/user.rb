@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :part_one_predict
+  has_one :part_two_predict
 
   # email_required? メソッドを追加
   def email_required?

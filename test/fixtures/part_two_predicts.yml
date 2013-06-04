@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  team_a: MyString
+  team_b: MyString
+  team_c: MyString
+  team_d: MyString
+  user_id: 1
+
+two:
+  team_a: MyString
+  team_b: MyString
+  team_c: MyString
+  team_d: MyString
+  user_id: 1

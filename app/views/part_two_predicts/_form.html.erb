@@ -1,0 +1,37 @@
+<%= form_for(@part_two_predict) do |f| %>
+  <% if @part_two_predict.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@part_two_predict.errors.count, "error") %> prohibited this part_two_predict from being saved:</h2>
+
+      <ul>
+      <% @part_two_predict.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :team_a %><br />
+    <%= f.text_field :team_a %>
+  </div>
+  <div class="field">
+    <%= f.label :team_b %><br />
+    <%= f.text_field :team_b %>
+  </div>
+  <div class="field">
+    <%= f.label :team_c %><br />
+    <%= f.text_field :team_c %>
+  </div>
+  <div class="field">
+    <%= f.label :team_d %><br />
+    <%= f.text_field :team_d %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -13,6 +13,7 @@
 <body>
 <% end %>
 
+<% if current_user %>
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
@@ -29,7 +30,7 @@
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">予想する！<b class="caret"></b></a>
             <ul class="dropdown-menu" id="swatch-menu">
               <li><%= link_to 'パート１：リーグ戦を予想', part_one_predicts_path %></li>
-              <li><%= link_to 'パート２：決勝トーナメント進出を予想', '' %></li>
+              <li><%= link_to 'パート２：決勝トーナメント進出を予想', part_two_predicts_path %></li>
               <li><%= link_to 'パート３：優勝・準優勝・３位を予想', '' %></li>
             </ul>
           </li>
@@ -53,6 +54,8 @@
     </div>
   </div>
 </div>
+<% end %>
+
 <div class="container">
   <div class="row">
     <div class="span">
