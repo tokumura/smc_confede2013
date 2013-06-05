@@ -2,8 +2,8 @@
 class Match < ActiveRecord::Base
   attr_accessible :game_no, :score_a, :score_b, :team_a, :team_b, :flag_a, :flag_b
 
-
   def self.init
+    Match.destroy_all
     (1..12).each do |i|
       case i
       when 1
@@ -35,7 +35,7 @@ class Match < ActiveRecord::Base
     end
   end
 
-  def set_match(game_no, team_a, team_b, flag_a, flag_b)
+  def self.set_match(game_no, team_a, team_b, flag_a, flag_b)
     match = Match.new
     match.game_no = game_no
     match.score_a = "0"
