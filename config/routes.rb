@@ -23,7 +23,11 @@ Confederations2013::Application.routes.draw do
     end
   end
 
-  resources :matches
+  resources :matches do
+    collection do 
+      get :init
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

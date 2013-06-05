@@ -10,6 +10,11 @@ class MatchesController < ApplicationController
     end
   end
 
+  def init
+    Match.init
+    redirect_to matches_path
+  end
+
   # GET /matches/1
   # GET /matches/1.json
   def show
