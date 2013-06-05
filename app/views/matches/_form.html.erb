@@ -12,32 +12,36 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :game_no %><br />
+    <%= f.label :game_no %>
     <%= f.number_field :game_no %>
   </div>
   <div class="field">
-    <%= f.label :team_a %><br />
+    <%= f.label :team_a %>
     <%= f.text_field :team_a %>
   </div>
   <div class="field">
-    <%= f.label :flag_a %><br />
+    <%= f.label :flag_a %>
     <%= f.text_field :flag_a %>
   </div>
   <div class="field">
-    <%= f.label :score_a %><br />
+    <%= f.label :score_a %>
     <%= f.number_field :score_a %>
   </div>
   <div class="field">
-    <%= f.label :team_b %><br />
+    <%= f.label :team_b %>
     <%= f.text_field :team_b %>
   </div>
   <div class="field">
-    <%= f.label :flag_b %><br />
+    <%= f.label :flag_b %>
     <%= f.text_field :flag_b %>
   </div>
   <div class="field">
-    <%= f.label :score_b %><br />
+    <%= f.label :score_b %>
     <%= f.number_field :score_b %>
+  </div>
+  <div class="field">
+    <%= f.label :done %>
+    <%= f.check_box :done %>
   </div>
   <div class="actions">
     <%= f.submit %>

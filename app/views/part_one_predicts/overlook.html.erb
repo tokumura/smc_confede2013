@@ -1,0 +1,35 @@
+<h1>Overlook</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td></td>
+      <td>結果</td>
+      <% @users.each do |user| %>
+        <td style="border-left: solid 1px #ddd; font-size:12px;"><%=user.name%></td>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @matches.each do |m| %>
+      <% score = " - " %>
+      <% if m.done %>
+        <% score = m.score_a.to_s + " - " + m.score_b.to_s %>
+      <% end %>
+      <tr>
+        <td>
+          <img src="../img/<%=m.flag_a%>.jpg" style="width:30px;height:20px;">&nbsp;&nbsp;-&nbsp; 
+          <img src="../img/<%=m.flag_b%>.jpg" style="width:30px;height:20px;">
+        </td>
+        <td style="text-align:center; border-left: solid 1px #ddd;">
+          <%=score%>
+        </td>
+        <% @users.each do |user| %>
+          <td style="text-align:center; border-left: solid 1px #ddd;">
+            <%=PartOnePredict.get_your_predict_label(user.id, m.game_no, true)%>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

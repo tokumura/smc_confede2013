@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Team a:</b>
+  <%= @part_two_result.team_a %>
+</p>
+
+<p>
+  <b>Team b:</b>
+  <%= @part_two_result.team_b %>
+</p>
+
+<p>
+  <b>Team c:</b>
+  <%= @part_two_result.team_c %>
+</p>
+
+<p>
+  <b>Team d:</b>
+  <%= @part_two_result.team_d %>
+</p>
+
+
+<%= link_to 'Edit', edit_part_two_result_path(@part_two_result) %> |
+<%= link_to 'Back', part_two_results_path %>

@@ -1,0 +1,29 @@
+<h1>Listing part_two_results</h1>
+
+<table>
+  <tr>
+    <th>Team a</th>
+    <th>Team b</th>
+    <th>Team c</th>
+    <th>Team d</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @part_two_results.each do |part_two_result| %>
+  <tr>
+    <td><%= part_two_result.team_a %></td>
+    <td><%= part_two_result.team_b %></td>
+    <td><%= part_two_result.team_c %></td>
+    <td><%= part_two_result.team_d %></td>
+    <td><%= link_to 'Show', part_two_result %></td>
+    <td><%= link_to 'Edit', edit_part_two_result_path(part_two_result) %></td>
+    <td><%= link_to 'Destroy', part_two_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Part two result', new_part_two_result_path %>

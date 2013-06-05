@@ -1,0 +1,27 @@
+
+<table class="table table-borderd">
+  <thead>
+    <tr>
+      <td style="border-right: solid 1px #ddd; text-align:center">試合日</td>
+      <td colspan="5" style="text-align:center;">結果</td>
+      <td style="border-left: solid 1px #ddd; text-align:center;">あなたの予想</td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @matches.each do |m| %>
+    <% score = "　ー　" %>
+    <% if m.done %>
+      <% score = m.score_a.to_s + " ー " + m.score_b.to_s %>
+    <% end %>
+    <tr>
+      <td style="border-right: solid 1px #ddd;"><%=m.day%></td>
+      <td style="text-align:right"><img src="img/<%=m.flag_a%>.jpg" style="width:30px;height:20px;"></td>
+      <td style="text-align:right"><%=m.team_a%>&nbsp;</td>
+      <td><%=score%></td>
+      <td><%=m.team_b%>&nbsp;</td>
+      <td style="text-align:left"><img src="img/<%=m.flag_b%>.jpg" style="width:30px;height:20px;"></td>
+      <td style="border-left: solid 1px #ddd; text-align:center"><%=PartOnePredict.get_your_predict_label(current_user.id, m.game_no, false)%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

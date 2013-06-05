@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130604150937) do
+ActiveRecord::Schema.define(:version => 20130605085113) do
 
   create_table "matches", :force => true do |t|
     t.integer  "game_no"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(:version => 20130604150937) do
     t.datetime "updated_at", :null => false
     t.string   "flag_a"
     t.string   "flag_b"
+    t.string   "day"
+    t.boolean  "done"
   end
 
   create_table "part_one_predicts", :force => true do |t|
@@ -44,6 +46,15 @@ ActiveRecord::Schema.define(:version => 20130604150937) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "part_two_results", :force => true do |t|
+    t.string   "team_a"
+    t.string   "team_b"
+    t.string   "team_c"
+    t.string   "team_d"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
@@ -59,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20130604150937) do
     t.datetime "updated_at",                                            :null => false
     t.string   "name"
     t.string   "account"
+    t.integer  "total_point"
   end
 
   add_index "users", ["name"], :name => "index_users_on_name"

@@ -1,5 +1,8 @@
 Confederations2013::Application.routes.draw do
 
+  resources :part_two_results
+
+
   devise_for :users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
@@ -10,6 +13,7 @@ Confederations2013::Application.routes.draw do
   resources :dashboard
   resources :part_one_predicts do
     collection do 
+      get :overlook
       get :init
       get :initall
       post :regist

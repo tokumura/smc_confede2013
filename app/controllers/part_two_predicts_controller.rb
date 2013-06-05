@@ -12,14 +12,7 @@ class PartTwoPredictsController < ApplicationController
   end
 
   def init
-    PartTwoPredict.destroy_all(["user_id = ?", current_user.id.to_s])
-    user = User.find(current_user.id)
-    pop = user.build_part_two_predict
-    pop.team_a = ""
-    pop.team_b = ""
-    pop.team_c = ""
-    pop.team_d = ""
-    pop.save
+    PartTwoPredict.init(current_user.id.to_s)
     redirect_to part_two_predicts_path
   end
 

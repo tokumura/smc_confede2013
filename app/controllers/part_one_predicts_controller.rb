@@ -11,6 +11,14 @@ class PartOnePredictsController < ApplicationController
       format.json { render json: @part_one_predicts }
     end
   end
+  
+  def overlook
+    @users = User.all
+    @matches = Match.all
+    respond_to do |format|
+      format.html # overlook.html.erb
+    end
+  end
 
   def regist
     predicts = params[:part_one_predict]
@@ -27,15 +35,7 @@ class PartOnePredictsController < ApplicationController
   end
 
   def init
-    PartOnePredict.destroy_all(["user_id = ?", current_user.id.to_s])
-    user = User.find(current_user.id)
-    (1..12).each do |p|
-      pop = user.part_one_predict.build
-      pop.game_no = p 
-      pop.score_a = "0"
-      pop.score_b = "0"
-      pop.save
-    end
+    PartOnePredict.init(current_user.id.to_s)
     redirect_to part_one_predicts_path
   end
 

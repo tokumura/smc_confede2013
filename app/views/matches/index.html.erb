@@ -1,12 +1,13 @@
 <h1>Listing matches</h1>
 
-<table>
+<table class="table table-borderd table-hover">
   <tr>
     <th>Game no</th>
     <th>Team a</th>
     <th>Score a</th>
     <th>Team b</th>
     <th>Score b</th>
+    <th>Done</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,6 +20,7 @@
     <td><%= match.score_a %></td>
     <td><%= match.team_b %></td>
     <td><%= match.score_b %></td>
+    <td><%= match.done %></td>
     <td><%= link_to 'Show', match %></td>
     <td><%= link_to 'Edit', edit_match_path(match) %></td>
     <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>

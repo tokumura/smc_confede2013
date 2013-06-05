@@ -1,0 +1,45 @@
+<h3>Group A</h3>
+<%
+  user = User.find(current_user.id)
+  ptp = user.part_two_predict
+%>
+<table class="table">
+  <thead>
+    <tr>
+      <td>これが現実だ</td>
+      <td>あなたの予想</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="width:50%;">
+        <h5><%=@ptresult_a%>　　<%=@ptresult_b%></h5>
+      </td>
+      <td style="width:50%;">
+        <h5><%=Match.convert_country(ptp.team_a)%>　　<%=Match.convert_country(ptp.team_b)%></h5>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br/>
+
+<h3>Group B</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <td>これが現実だ</td>
+      <td>あなたの予想</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="width:50%;">
+        <h5><%=@ptresult_c%>　　<%=@ptresult_d%></h5>
+      </td>
+      <td style="width:50%;">
+        <h5><%=Match.convert_country(ptp.team_c)%>　　<%=Match.convert_country(ptp.team_d)%></h5>
+      </td>
+    </tr>
+  </tbody>
+</table>
