@@ -1,3 +1,4 @@
+# coding: utf-8
 class PartTwoPredictsController < ApplicationController
   # GET /part_two_predicts
   # GET /part_two_predicts.json
@@ -60,6 +61,8 @@ class PartTwoPredictsController < ApplicationController
 
   # GET /part_two_predicts/1/edit
   def edit
+    @option_a = {'(予想せよ)' => '', 'ブラジル' => 'brazil', '日本' => 'japan', 'メキシコ' => 'mexico', 'イタリア' => 'italia'} 
+    @option_b = {'(予想せよ)' => '', 'スペイン' => 'spain', 'ウルグアイ' => 'uruguay', 'タヒチ' => 'tahichi', 'ナイジェリア' => 'nigeria'} 
     @part_two_predict = PartTwoPredict.find(params[:id])
   end
 
@@ -83,16 +86,8 @@ class PartTwoPredictsController < ApplicationController
   # PUT /part_two_predicts/1.json
   def update
     @part_two_predict = PartTwoPredict.find(params[:id])
-
-    respond_to do |format|
-      if @part_two_predict.update_attributes(params[:part_two_predict])
-        format.html { redirect_to @part_two_predict, notice: 'Part two predict was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @part_two_predict.errors, status: :unprocessable_entity }
-      end
-    end
+    @part_two_predict.update_attributes(params[:part_two_predict])
+    redirect_to edit_part_two_predict_path(@part_two_predict.id)
   end
 
   # DELETE /part_two_predicts/1

@@ -1,3 +1,4 @@
+<div class="span12">
 <%= form_for(@part_two_predict) do |f| %>
   <% if @part_two_predict.errors.any? %>
     <div id="error_explanation">
@@ -11,27 +12,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :team_a %><br />
-    <%= f.text_field :team_a %>
+  <div class="row">
+    <div class="span12">
+      <h2>予想パート２　決勝トーナメント進出国を予想せよ</h2>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :team_b %><br />
-    <%= f.text_field :team_b %>
-  </div>
-  <div class="field">
-    <%= f.label :team_c %><br />
-    <%= f.text_field :team_c %>
-  </div>
-  <div class="field">
-    <%= f.label :team_d %><br />
-    <%= f.text_field :team_d %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <div class="row">
+    <div class="span12">
+      <h3>Group A</h3>
+      <div class="field">
+        <%= f.select :team_a, @option_a, {} %>
+        <%= f.select :team_b, @option_a, {} %>
+      </div>
+
+      <h3>Group B</h3>
+      <div class="field">
+        <%= f.select :team_c, @option_b, {} %>
+        <%= f.select :team_d, @option_b, {} %>
+      </div>
+      <br/>
+      <div class="field">
+        <%= f.submit 'これで勝負する！', :class => 'btn btn-info' %>
+      </div>
+    </div>
+
 <% end %>
