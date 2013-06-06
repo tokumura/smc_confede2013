@@ -40,15 +40,7 @@ class PartOnePredictsController < ApplicationController
   end
 
   def initall
-    PartOnePredict.destroy_all
-    users = User.all
-    users.each do |u|
-      (1..12).each_with_index do |i, j|
-        pop = u.part_one_predict.build
-        pop.game_no = i
-        pop.save
-      end
-    end
+    PartOnePredict.initall
     redirect_to part_one_predicts_path
   end
 
