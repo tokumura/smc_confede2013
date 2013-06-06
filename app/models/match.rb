@@ -38,13 +38,14 @@ class Match < ActiveRecord::Base
   def self.set_match(game_no, team_a, team_b, flag_a, flag_b, day)
     match = Match.new
     match.game_no = game_no
-    match.score_a = "0"
-    match.score_b = "0"
+    match.score_a = 0
+    match.score_b = 0
     match.team_a = team_a
     match.team_b = team_b
     match.flag_a = flag_a
     match.flag_b = flag_b
     match.day = day
+    match.done = false
     match.save
   end
 

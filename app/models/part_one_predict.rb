@@ -35,17 +35,8 @@ class PartOnePredict < ActiveRecord::Base
       u.part_one_predict.each do |pop|
         match = Match.find_by_game_no(pop.game_no)
         if match.done
-          puts "#############"
-          puts "pop: " + pop.score_a.to_s + " - " + pop.score_b.to_s
-          puts "mat: " + match.score_a.to_s + " - " + match.score_b.to_s
-          puts "#############"
-
           result = get_result_of_match(pop.game_no)
           predict = get_your_predict(pop)
-          puts predict
-          puts result
-          puts ""
-
           if predict == result
             pop_point = pop_point + 3
           end
@@ -96,6 +87,24 @@ class PartOnePredict < ActiveRecord::Base
       end
     end
     label
+  end
+
+  def self.hit_status(user_id, game_no)
+    status = ""
+    match = Match.find_by_game_no(game_no)
+    if match.done
+      pop = PartOnePredict.where(['user_id = ? AND game_no = ?', user_id, game_no])[0]
+      predict = get_your_predict(pop)
+      result = get_result_of_match(game_no)
+      puts predict
+      if predict == result
+        status = "hit"
+        if pop.score_a == match.score_a && pop.score_b == match.score_b
+          status = "just"
+        end
+      end
+    end
+    status
   end
 
 end

@@ -4,7 +4,8 @@
   <thead>
     <tr>
       <td></td>
-      <td>結果</td>
+      <td></td>
+      <td style="border-left: solid 1px #ddd;">結果</td>
       <% @users.each do |user| %>
         <td style="border-left: solid 1px #ddd; font-size:12px;"><%=user.name%></td>
       <% end %>
@@ -17,19 +18,35 @@
         <% score = m.score_a.to_s + " - " + m.score_b.to_s %>
       <% end %>
       <tr>
+        <td><%=m.day%></td>
         <td>
           <img src="../img/<%=m.flag_a%>.jpg" style="width:30px;height:20px;">&nbsp;&nbsp;-&nbsp; 
           <img src="../img/<%=m.flag_b%>.jpg" style="width:30px;height:20px;">
         </td>
-        <td style="text-align:center; border-left: solid 1px #ddd;">
+        <td style="font-weight:bold; text-align:center; border-left: solid 1px #ddd;">
           <%=score%>
         </td>
         <% @users.each do |user| %>
-          <td style="text-align:center; border-left: solid 1px #ddd;">
+          <% hit_status = PartOnePredict.hit_status(user.id.to_s, m.game_no) %>
+          <% if hit_status == "hit" %>
+            <td style="text-align:center; border-left: solid 1px #ddd; background:#98fb98">
+          <% elsif hit_status == "just" %>
+            <td style="text-align:center; border-left: solid 1px #ddd; background:#ff8e8e">
+          <% else %>
+            <td style="text-align:center; border-left: solid 1px #ddd;">
+          <% end %>
             <%=PartOnePredict.get_your_predict_label(user.id, m.game_no, true)%>
           </td>
         <% end %>
       </tr>
     <% end %>
+      <tr>
+        <td colspan="3" style="border-top: solid 2px #ddd;">獲得ポイント</td>
+        <% @users.each do |user| %>
+          <td style="text-align:center; border-left: solid 1px #ddd; border-top: solid 2px #ddd;">
+            <%=user.total_point%>
+          </td>
+        <% end %>
+      </tr>
   </tbody>
 </table>

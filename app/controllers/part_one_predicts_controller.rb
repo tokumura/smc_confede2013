@@ -13,7 +13,8 @@ class PartOnePredictsController < ApplicationController
   end
   
   def overlook
-    @users = User.all
+    PartOnePredict.calc_pop
+    @users = User.order("total_point DESC")
     @matches = Match.all
     respond_to do |format|
       format.html # overlook.html.erb
