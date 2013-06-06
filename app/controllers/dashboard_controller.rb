@@ -14,7 +14,7 @@ class DashboardController < ApplicationController
       Match.init
     end
 
-    @matches = Match.all
+    @matches = Match.order("game_no ASC")
     ptr = PartTwoResult.all
     @ptresult_a = ptr[0].team_a
     @ptresult_b = ptr[0].team_b
