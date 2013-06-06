@@ -32,18 +32,19 @@
               <ul class="dropdown-menu" id="swatch-menu">
                 <li><%= link_to 'パート１：リーグ戦を予想', part_one_predicts_path %></li>
                 <li><%= link_to 'パート２：決勝トーナメント進出を予想', edit_part_two_predict_path(user.part_two_predict.id) %></li>
-                <li><%= link_to 'パート３：優勝・準優勝・３位を予想', '', :onclick => 'alert("いまつくってます")' %></li>
+                <li><%= link_to 'パート３：優勝・準優勝・３位を予想', '', :onclick => 'alert("近日開設！")' %></li>
               </ul>
             </li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">みんなの予想<b class="caret"></b></a>
               <ul class="dropdown-menu" id="swatch-menu">
                 <li><%= link_to 'パート１：リーグ戦を予想', overlook_part_one_predicts_path %></li>
-                <li><%= link_to 'パート２：決勝トーナメント進出を予想', '', :onclick => 'alert("いまつくってます")' %></li>
-                <li><%= link_to 'パート３：優勝・準優勝・３位を予想', '', :onclick => 'alert("いまつくってます")' %></li>
+                <li><%= link_to 'パート２：決勝トーナメント進出を予想', '', :onclick => 'alert("もうすぐできますヾ( ﾟ∀ﾟ)ﾉﾞ")' %></li>
+                <li><%= link_to 'パート３：優勝・準優勝・３位を予想', '', :onclick => 'alert("近日開設！")' %></li>
               </ul>
             </li>
-            <li><a href="<%=user_root_path%>">ネタはこちら</a></li>
+            <li><a href="<%=information_index_path%>">みんなの掲示板</a></li>
+            <li><%= link_to 'みんなの掲示板', '', :onclick => 'alert("間もなくオープンm(_ _)m")' %></li>
           </ul>
           <% if current_user %>
           <ul class="nav pull-right" id="main-menu-right">

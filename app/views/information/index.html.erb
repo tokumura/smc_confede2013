@@ -1,0 +1,27 @@
+<h2>みんなの掲示板</h2>
+
+<table class="table table-bordered table-hover">
+  <tr>
+    <th style="width:20%;">タイトル</th>
+    <th style="width:60%;">詳細</th>
+    <th style="width:15%;">情報提供者</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @information.each do |information| %>
+  <tr>
+    <td><%= information.title %></td>
+    <td><%= information.infobody %></td>
+    <td><%= information.informant %></td>
+    <td><%= link_to 'Show', information %></td>
+    <td><%= link_to 'Edit', edit_information_path(information) %></td>
+    <td><%= link_to 'Destroy', information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Information', new_information_path %>

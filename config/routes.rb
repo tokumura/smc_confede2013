@@ -1,5 +1,8 @@
 Confederations2013::Application.routes.draw do
 
+  resources :information
+
+
   resources :part_two_results
 
 

@@ -1,23 +1,36 @@
+<%
+  users = User.order("account ASC")
+  option_users = Hash.new
+  option_users.store('（自分を選んでください）', '')
+  users.each do |u|
+    option_users.store(u.name, u.account)
+  end
+%>
+
 <div class="span8 offset1" style="color:#FFFFFF">
-  <h2>Confederations Cup 2013</h2>
+  <h2>Sanei Confederations Cup 2013</h2>
+  <h4>〜 絶対に負けられない戦いが、そこにはある 〜</h4>
 </div>
 
 <div class="span4 offset7 well">
 
+
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :account %>
-  <%= f.text_field :account %></div>
+  <div>
+    <%= f.label :account %>
+    <%= f.select :account, option_users, {} %>
+  </div>
 
   <div><%= f.label :password %>
   <%= f.password_field :password %></div>
 
   <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %><%= f.label :remember_me %></div>
+    <div><%# f.check_box :remember_me %><%# f.label :remember_me %></div>
   <% end -%>
 
   <div><%= f.submit "Sign in", :class => 'btn btn-info' %></div>
 <% end %>
 
-<%= render :partial => "devise/shared/links" %>
+<%# render :partial => "devise/shared/links" %>
 
 </div>
