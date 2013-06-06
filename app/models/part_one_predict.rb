@@ -14,6 +14,20 @@ class PartOnePredict < ActiveRecord::Base
     end
   end
 
+  def self.initall
+    PartOnePredict.destroy_all
+    users = User.all
+    users.each do |u|
+      (1..12).each do |p|
+        pop = u.part_one_predict.build
+        pop.game_no = p 
+        pop.score_a = "0"
+        pop.score_b = "0"
+        pop.save
+      end
+    end
+  end
+
   def self.calc_pop
     users = User.all
     users.each do |u|
