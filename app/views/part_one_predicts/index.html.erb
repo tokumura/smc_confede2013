@@ -15,13 +15,22 @@
     <% @part_one_predicts.each_with_index do |pop, i| %>
       <% m = Match.find_by_game_no(pop.game_no) %>
       <%=fields_for pop do |p| %>
+      <% if m.done %>
+        <tr style="background-color:#DDDDDD">
+      <% else %>
         <tr>
+      <% end %>
           <td style="vertical-align:middle;"><td>
           <td><img src="img/<%=m.flag_a%>.jpg" style="widih:40px; height:30px"></td>
           <td style="vertical-align:middle;"><h4><%= m.team_a %></h4></td>
           <td style="vertical-align:middle;">
-            <%=p.select :score_a, @points, {}, :index => i, :style => "width:70px;" %>　ー　
-            <%=p.select :score_b, @points, {}, :index => i, :style => "width:70px;" %>
+            <% if m.done %>
+              <%=p.select :score_a, @points, {}, :index => i, :style => "width:70px;", :disabled => true %>　ー　
+              <%=p.select :score_b, @points, {}, :index => i, :style => "width:70px;", :disabled => true %>
+            <% else %>
+              <%=p.select :score_a, @points, {}, :index => i, :style => "width:70px;" %>　ー　
+              <%=p.select :score_b, @points, {}, :index => i, :style => "width:70px;" %>
+            <% end %>
           </td>
           <td style="vertical-align:middle;"><h4><%= m.team_b %></h4></td>
           <td><img src="img/<%=m.flag_b%>.jpg" style="widih:40px; height:30px"></td>
