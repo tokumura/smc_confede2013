@@ -1,21 +1,62 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @information.title %>
-</p>
+<div class="row">
+  <div class="span12">
+    <table style="background-color:#FFFFFF;" class="table table-bordered">
+      <tr>
+        <td style="width:10%;">タイトル</td>
+        <td style="width:60%;"><%= @information.title %></td>
+        <td style="width:10%;">投稿者</td>
+        <td style="width:20%;"><%= User.find(@information.informant).name %></td>
+      </tr>
+      <tr>
+        <td colspan="4" style="height:100px;">
+          <%= auto_link(simple_format(@information.infobody), :html => { :target => '_blank' }, :link => :urls) %>
+        </td>
 
-<p>
-  <b>Infobody:</b>
-  <%= auto_link(simple_format(@information.infobody), :html => { :target => '_blank' }, :link => :urls) %>
-</p>
+      </tr>
+    </table>
+    <%= link_to '一覧に戻る', information_index_path, :class => 'btn btn-info' %>　
+    <% if @information.informant.to_i == current_user.id %>
+      <%= link_to '修正', edit_information_path(@information), :class => 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>
 
+<br/>
 
-<p>
-  <b>Informant:</b>
-  <%= @information.informant %>
-</p>
+<div class="row">
+  <div class="span12">
 
+    <%= form_for(@comment) do |f| %>
+      <div class="field">
+        <h5>
+          コメントする　　
+          <%= f.submit '投　稿', :class => "btn btn-inverse" %>
+        </h5>
+        <%= f.text_area :comment_body, :style => "width:98%; height:80px;" %>
+      </div>
+      <div class="actions">
+      </div>
+      <%= f.hidden_field :information_id %>
+      <%= f.hidden_field :comment_user_id %>
+    <% end %>
 
-<%= link_to 'Edit', edit_information_path(@information) %> |
-<%= link_to 'Back', information_index_path %>
+    <% if Comment.find_all_by_information_id(@information.id).size > 0 %>
+      <h5>みんなのコメント</h5>
+      <table style="background-color:#FFFFFF;" class="table table-bordered">
+        <% @comments.each do |c| %>
+          <tr>
+            <td>
+              <h5><%= User.find(c.comment_user_id).name %>さん　<%= c.created_at.strftime("%Y/%m/%d %H:%M") %></h5>
+              <%= simple_format(c.comment_body) %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <br/>
+      <br/>
+    <% end %>
+  </div>
+</div>
+

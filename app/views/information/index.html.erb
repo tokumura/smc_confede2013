@@ -21,16 +21,22 @@
     <table class="table table-bordered table-hover">
       <tr>
         <th style="width:20%;">タイトル</th>
-        <th style="width:60%;">詳細</th>
-        <th style="width:10%;">提供者</th>
+        <th style="width:50%;">詳細</th>
+        <th style="width:10%;">コメント</th>
+        <th style="width:10%;">投稿者</th>
         <th></th>
       </tr>
 
     <% @information.each do |information| %>
       <% user = User.find(information.informant) %>
+      <% continue_simbol = "" %>
+      <% if information.infobody.length > 110 %>
+        <% continue_simbol = "・・・(続きあり)" %>
+      <% end %>
       <tr>
         <td><%= information.title %></td>
-        <td><%= auto_link(simple_format(information.infobody), :html => { :target => '_blank' }, :link => :urls) %></td>
+        <td><%= auto_link(simple_format(information.infobody[0..110] + continue_simbol), :html => { :target => '_blank' }, :link => :urls) %></td>
+        <td><%= information.comments.size %></td>
         <td><%= user.name %></td>
         <td>
           <%=link_to({:controller => "information", :action => "show", :id => information.id}) do %>

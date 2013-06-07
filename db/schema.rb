@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606084346) do
+ActiveRecord::Schema.define(:version => 20130607061311) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "information_id"
+    t.text     "comment_body"
+    t.integer  "comment_user_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "information", :force => true do |t|
     t.string   "title"
@@ -33,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20130606084346) do
     t.string   "flag_b"
     t.string   "day"
     t.boolean  "done"
+    t.string   "closingday"
   end
 
   create_table "part_one_predicts", :force => true do |t|
@@ -42,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20130606084346) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.string   "closingday"
   end
 
   create_table "part_two_predicts", :force => true do |t|

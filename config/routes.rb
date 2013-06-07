@@ -1,5 +1,8 @@
 Confederations2013::Application.routes.draw do
 
+  resources :comments
+
+
   resources :information
 
 
