@@ -1,27 +1,54 @@
-<h2>みんなの掲示板</h2>
 
-<table class="table table-bordered table-hover">
-  <tr>
-    <th style="width:20%;">タイトル</th>
-    <th style="width:60%;">詳細</th>
-    <th style="width:15%;">情報提供者</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="row">
+  <div class="span8">
+    <h2>みんなの掲示板</h2>
+  </div>
+  <div class="span4">
+    <div align="right">
+      <br/>
+      <%= link_to '情報提供する', new_information_path, :class => "btn btn-info" %>
+    </div>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="span12">
+    <div align="right">
+      <i class="icon-eye-open"></i> : 詳細　
+      <i class="icon-edit"></i> : 修正　
+      <i class="icon-trash"></i> : 削除
+    </div>
+    <table class="table table-bordered table-hover">
+      <tr>
+        <th style="width:20%;">タイトル</th>
+        <th style="width:60%;">詳細</th>
+        <th style="width:10%;">提供者</th>
+        <th></th>
+      </tr>
 
-<% @information.each do |information| %>
-  <tr>
-    <td><%= information.title %></td>
-    <td><%= information.infobody %></td>
-    <td><%= information.informant %></td>
-    <td><%= link_to 'Show', information %></td>
-    <td><%= link_to 'Edit', edit_information_path(information) %></td>
-    <td><%= link_to 'Destroy', information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+    <% @information.each do |information| %>
+      <% user = User.find(information.informant) %>
+      <tr>
+        <td><%= information.title %></td>
+        <td><%= auto_link(simple_format(information.infobody), :html => { :target => '_blank' }, :link => :urls) %></td>
+        <td><%= user.name %></td>
+        <td>
+          <%=link_to({:controller => "information", :action => "show", :id => information.id}) do %>
+            <i class="icon-eye-open"></i>
+          <% end %>&nbsp;
+          <% if user.id == current_user.id %>
+            <%=link_to({:controller => "information", :action => "edit", :id => information.id}) do %>
+              <i class="icon-edit"></i>
+            <% end %>&nbsp;
+            <%=link_to({:controller => "information", :action => "destroy", :id => information.id}, 
+                       {:method => :delete, confirm: '消しちゃいますよ?'}) do %>
+              <i class="icon-trash"></i>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>
 
-<br />
-
-<%= link_to 'New Information', new_information_path %>

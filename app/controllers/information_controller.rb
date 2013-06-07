@@ -42,9 +42,14 @@ class InformationController < ApplicationController
   # POST /information.json
   def create
     @information = Information.new(params[:information])
-
+    if @information.save
+      redirect_to information_index_path
+    else
+    end
+=begin
     respond_to do |format|
       if @information.save
+        redirect_to information_index_path
         format.html { redirect_to @information, notice: 'Information was successfully created.' }
         format.json { render json: @information, status: :created, location: @information }
       else
@@ -52,15 +57,22 @@ class InformationController < ApplicationController
         format.json { render json: @information.errors, status: :unprocessable_entity }
       end
     end
+=end
   end
 
   # PUT /information/1
   # PUT /information/1.json
   def update
     @information = Information.find(params[:id])
+    if @information.update_attributes(params[:information])
+      redirect_to information_index_path
+    else
+    end
 
+=begin
     respond_to do |format|
       if @information.update_attributes(params[:information])
+        redirect_to information_index_path
         format.html { redirect_to @information, notice: 'Information was successfully updated.' }
         format.json { head :no_content }
       else
@@ -68,6 +80,7 @@ class InformationController < ApplicationController
         format.json { render json: @information.errors, status: :unprocessable_entity }
       end
     end
+=end
   end
 
   # DELETE /information/1

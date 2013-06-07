@@ -8,6 +8,7 @@ gem 'rails', '3.2.13'
 gem 'therubyracer'
 gem 'devise'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem 'rails_autolink'
 
 group :production do
   gem 'pg'

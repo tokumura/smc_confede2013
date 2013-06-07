@@ -7,8 +7,9 @@
 
 <p>
   <b>Infobody:</b>
-  <%= @information.infobody %>
+  <%= auto_link(simple_format(@information.infobody), :html => { :target => '_blank' }, :link => :urls) %>
 </p>
+
 
 <p>
   <b>Informant:</b>
