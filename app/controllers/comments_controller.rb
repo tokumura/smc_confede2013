@@ -78,10 +78,12 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-
+    redirect_to information_path(params[:information_id])
+=begin
     respond_to do |format|
       format.html { redirect_to comments_url }
       format.json { head :no_content }
     end
+=end
   end
 end

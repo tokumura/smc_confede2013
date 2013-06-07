@@ -14,8 +14,7 @@ class InformationController < ApplicationController
   # GET /information/1.json
   def show
     @information = Information.find(params[:id])
-    @comments = Comment.find(:all, :conditions => { :information_id => @information.id }, :order => 'created_at DESC')
-    #@comments = Comment.find_all_by_information_id(@information.id)
+    @comments = Comment.find(:all, :conditions => { :information_id => @information.id }, :order => 'created_at ASC')
     @comment = @information.comments.build
     @comment.comment_user_id = current_user.id
 

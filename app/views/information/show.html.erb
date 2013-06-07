@@ -2,12 +2,21 @@
 
 <div class="row">
   <div class="span12">
+    <div align="right">
+    </div>
     <table style="background-color:#FFFFFF;" class="table table-bordered">
       <tr>
-        <td style="width:10%;">タイトル</td>
+        <td style="width:15%;">
+          <% if @information.informant.to_i == current_user.id %>
+            <%= link_to({:controller => 'information', :action => 'edit', :id => @information.id}) do %>
+              <i class="icon-edit"></i>
+            <% end %>
+          <% end %>
+          タイトル
+        </td>
         <td style="width:60%;"><%= @information.title %></td>
         <td style="width:10%;">投稿者</td>
-        <td style="width:20%;"><%= User.find(@information.informant).name %></td>
+        <td style="width:15%;"><%= User.find(@information.informant).name %></td>
       </tr>
       <tr>
         <td colspan="4" style="height:100px;">
@@ -16,23 +25,36 @@
 
       </tr>
     </table>
-    <%= link_to '一覧に戻る', information_index_path, :class => 'btn btn-info' %>　
-    <% if @information.informant.to_i == current_user.id %>
-      <%= link_to '修正', edit_information_path(@information), :class => 'btn btn-success' %>
-    <% end %>
   </div>
 </div>
-
-<br/>
 
 <div class="row">
   <div class="span12">
 
+    <% if Comment.find_all_by_information_id(@information.id).size > 0 %>
+      <table style="background-color:#FFFFFF;" class="table table-bordered">
+        <% @comments.each_with_index do |c, i| %>
+          <tr>
+            <td>
+              <h5>
+                <%=i+1%>.　<%= User.find(c.comment_user_id).name %>さん
+                <% if c.comment_user_id.to_s == current_user.id.to_s %>
+                  <%=link_to({:controller => "comments", :action => "destroy", :id => c.id, :information_id => @information.id},
+                             {:method => :delete, confirm: '消しちゃいますよ?'}) do %>
+                    <i class="icon-trash"></i>
+                  <% end %>
+                <% end %>
+              </h5>
+              <%= auto_link(simple_format(c.comment_body), :html => { :target => '_blank' }, :link => :urls) %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
     <%= form_for(@comment) do |f| %>
       <div class="field">
         <h5>
-          コメントする　　
-          <%= f.submit '投　稿', :class => "btn btn-inverse" %>
+          <%= f.submit '書き込む', :class => "btn btn-inverse" %>
         </h5>
         <%= f.text_area :comment_body, :style => "width:98%; height:80px;" %>
       </div>
@@ -41,22 +63,8 @@
       <%= f.hidden_field :information_id %>
       <%= f.hidden_field :comment_user_id %>
     <% end %>
+      <br/>
 
-    <% if Comment.find_all_by_information_id(@information.id).size > 0 %>
-      <h5>みんなのコメント</h5>
-      <table style="background-color:#FFFFFF;" class="table table-bordered">
-        <% @comments.each do |c| %>
-          <tr>
-            <td>
-              <h5><%= User.find(c.comment_user_id).name %>さん</h5>
-              <%= simple_format(c.comment_body) %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-      <br/>
-      <br/>
-    <% end %>
   </div>
 </div>
 
