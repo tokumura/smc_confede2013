@@ -48,7 +48,7 @@
         <% @comments.each do |c| %>
           <tr>
             <td>
-              <h5><%= User.find(c.comment_user_id).name %>さん　<%= c.created_at.strftime("%Y/%m/%d %H:%M") %></h5>
+              <h5><%= User.find(c.comment_user_id).name %>さん</h5>
               <%= simple_format(c.comment_body) %>
             </td>
           </tr>
