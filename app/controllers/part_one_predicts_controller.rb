@@ -1,3 +1,4 @@
+# coding: utf-8
 class PartOnePredictsController < ApplicationController
   # GET /part_one_predicts
   # GET /part_one_predicts.json
@@ -32,7 +33,8 @@ class PartOnePredictsController < ApplicationController
       pop.score_b = p[1][:score_b]
       pop.save
     end
-    redirect_to part_one_predicts_path
+    News.regist(user.name + "さんが予想パート１を更新しました！")
+    redirect_to part_one_predicts_path, :notice => 'あなたの予想を更新しました。　これでいっちゃうんですよね？　(　´_ゝ`)ﾌﾟﾌﾟｯ'
   end
 
   def init

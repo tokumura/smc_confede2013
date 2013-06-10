@@ -1,3 +1,4 @@
+# coding: utf-8
 class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
@@ -42,6 +43,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
     if @comment.save
+      News.regist(User.find(current_user.id).name + "さんが '" + @comment.information.title[0..10] + "...' にコメントしました！")
       redirect_to information_path(@comment.information_id)
     end
 =begin

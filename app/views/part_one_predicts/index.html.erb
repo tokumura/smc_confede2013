@@ -1,3 +1,9 @@
+<% if notice %>
+  <div class="alert alert-success" align="center">
+    <%= notice %>
+    <button type="button" class="close" data-dismiss="alert">×</button>
+  </div>
+<% end %>
 <div class="span12">
   <%=form_tag(regist_part_one_predicts_path) do |fm| %>
 

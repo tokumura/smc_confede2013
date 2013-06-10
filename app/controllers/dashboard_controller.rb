@@ -27,6 +27,8 @@ class DashboardController < ApplicationController
     PartOnePredict.calc_pop
     @users_ranked = User.order("total_point DESC")
 
+    @news = News.order('created_at DESC')
+
     respond_to do |format|
       format.html
     end

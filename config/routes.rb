@@ -1,5 +1,12 @@
 Confederations2013::Application.routes.draw do
 
+  resources :news do
+    collection do
+      get :initall
+    end
+  end
+
+
   resources :comments
 
 

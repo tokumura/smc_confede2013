@@ -14,7 +14,6 @@
 <div class="row">
   <div class="span12">
     <div align="right">
-      <i class="icon-eye-open"></i> : 詳細　
       <i class="icon-edit"></i> : 修正　
       <i class="icon-trash"></i> : 削除
     </div>
@@ -22,7 +21,7 @@
       <tr>
         <th style="width:20%;">タイトル</th>
         <th style="width:50%;">詳細</th>
-        <th style="width:10%;">コメント</th>
+        <th style="width:10%;">書き込み</th>
         <th style="width:10%;">投稿者</th>
         <th></th>
       </tr>
@@ -34,14 +33,11 @@
         <% continue_simbol = "・・・(続きあり)" %>
       <% end %>
       <tr>
-        <td><%= information.title %></td>
+        <td><%= link_to information.title, information_path(information.id) %></td>
         <td><%= auto_link(simple_format(information.infobody[0..110] + continue_simbol), :html => { :target => '_blank' }, :link => :urls) %></td>
         <td><%= information.comments.size %></td>
         <td><%= user.name %></td>
         <td>
-          <%=link_to({:controller => "information", :action => "show", :id => information.id}) do %>
-            <i class="icon-eye-open"></i>
-          <% end %>&nbsp;
           <% if user.id == current_user.id %>
             <%=link_to({:controller => "information", :action => "edit", :id => information.id}) do %>
               <i class="icon-edit"></i>

@@ -5,9 +5,11 @@
       <%= render :partial => "ranking" %>
     </div>
     <div class="span8 well">
-      <h2>Result</h2>
       <ul class="nav nav-tabs">
         <li class="active">
+          <a href="#news" data-toggle="tab">　新着情報　</a>
+        </li>
+        <li class="">
           <a href="#part_1" data-toggle="tab">予想パート１</a>
         </li>
         <li>
@@ -15,7 +17,10 @@
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade active in" id="part_1">
+        <div class="tab-pane fade active in" id="news">
+          <%= render :partial => "news" %>
+        </div>
+        <div class="tab-pane fade" id="part_1">
           <%= render :partial => "result_part_1" %>
         </div>
         <div class="tab-pane fade" id="part_2">

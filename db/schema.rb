@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130607061311) do
+ActiveRecord::Schema.define(:version => 20130610045515) do
 
   create_table "comments", :force => true do |t|
     t.integer  "information_id"
@@ -42,6 +42,12 @@ ActiveRecord::Schema.define(:version => 20130607061311) do
     t.string   "day"
     t.boolean  "done"
     t.string   "closingday"
+  end
+
+  create_table "news", :force => true do |t|
+    t.string   "news_body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "part_one_predicts", :force => true do |t|

@@ -80,7 +80,8 @@ class PartTwoPredictsController < ApplicationController
   def update
     @part_two_predict = PartTwoPredict.find(params[:id])
     @part_two_predict.update_attributes(params[:part_two_predict])
-    redirect_to edit_part_two_predict_path(@part_two_predict.id)
+    News.regist(User.find(current_user.id).name + "さんが予想パート２を更新しました！")
+    redirect_to edit_part_two_predict_path(@part_two_predict.id), :notice => 'あなたの予想を更新しました。　本当にこれでいいんですか？　(￣ー￣)ﾆﾔﾘ'
   end
 
   # DELETE /part_two_predicts/1

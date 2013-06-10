@@ -1,3 +1,4 @@
+# coding: utf-8
 class InformationController < ApplicationController
   # GET /information
   # GET /information.json
@@ -46,6 +47,7 @@ class InformationController < ApplicationController
   def create
     @information = Information.new(params[:information])
     if @information.save
+      News.regist(User.find(current_user.id).name + "さんが新しい話題 '" + @information.title[0..10] + "...' を登録しました！")
       redirect_to information_index_path
     else
     end
