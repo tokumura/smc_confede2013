@@ -1,13 +1,14 @@
 <h2>みんなの予想（決勝トーナメント進出）</h2>
 
 <div class="row">
-  <div class="span10">
+  <div class="span12">
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
           <td style="width:20%"></td>
-          <td style="width:40%; text-align:center;">Group A</td>
-          <td style="width:40%; text-align:center;">Group B</td>
+          <td style="width:30%; text-align:center;">Group A</td>
+          <td style="width:30%; text-align:center;">Group B</td>
+          <td style="width:20%; text-align:center;">獲得ポイント</td>
         </tr>
       </thead>
       <tbody>
@@ -15,6 +16,8 @@
           <td>これが現実</td>
           <td>？？？・？？？</td>
           <td>？？？・？？？</td>
+          <td>
+          </td>
         </tr>
       <% @ptp.each do |p| %>
         <% user = User.find(p.user_id) %>
@@ -27,6 +30,8 @@
           <td>
             <%=Match.convert_country(p.team_c)%>・
             <%=Match.convert_country(p.team_d)%>
+          </td>
+          <td>
           </td>
         </tr>
       <% end %>
