@@ -15,4 +15,14 @@ class User < ActiveRecord::Base
   def email_required?
     false
   end
+
+  # UserAgent
+  def self.check_user_agent(request)
+    agent = "D"
+    ua = request.env["HTTP_USER_AGENT"]
+    if(ua.include?('Mobile') || ua.include?('Android'))
+      agent = "M"
+    end
+    agent
+  end
 end

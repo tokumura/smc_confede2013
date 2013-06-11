@@ -11,6 +11,13 @@ class PartTwoPredictsController < ApplicationController
     end
   end
 
+  def overlook
+    @ptp = PartTwoPredict.order("user_id")
+    respond_to do |format|
+      format.html # overlook.html.erb
+    end
+  end
+
   def init
     PartTwoPredict.init(current_user.id.to_s)
     redirect_to part_two_predicts_path

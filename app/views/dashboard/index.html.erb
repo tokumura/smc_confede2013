@@ -1,32 +1,5 @@
-<h1>Dashboard</h1>
-<div class="span12">
-  <div class="row">
-    <div class="span2 well">
-      <%= render :partial => "ranking" %>
-    </div>
-    <div class="span8 well">
-      <ul class="nav nav-tabs">
-        <li class="active">
-          <a href="#news" data-toggle="tab">　新着情報　</a>
-        </li>
-        <li class="">
-          <a href="#part_1" data-toggle="tab">予想パート１</a>
-        </li>
-        <li>
-          <a href="#part_2" data-toggle="tab">予想パート２</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade active in" id="news">
-          <%= render :partial => "news" %>
-        </div>
-        <div class="tab-pane fade" id="part_1">
-          <%= render :partial => "result_part_1" %>
-        </div>
-        <div class="tab-pane fade" id="part_2">
-          <%= render :partial => "result_part_2" %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<% if User.check_user_agent(request) == "M" %>
+  <%= render :partial => "mobile" %>
+<% else %>
+  <%= render :partial => "desktop" %>
+<% end %>

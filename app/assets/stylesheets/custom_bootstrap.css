@@ -8,3 +8,21 @@ body {
   -moz-background-size:cover;
   background-size:cover;
 }
+
+body.mob {
+  padding-top: 10px;
+}
+
+.container-mob {
+  margin-left: 30px;
+}
+
+img {
+  max-width: 100%;
+  max-height: auto;
+}
+
+iframe {
+  max-width: 100%;
+  height: auto;
+}

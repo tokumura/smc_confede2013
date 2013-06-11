@@ -35,6 +35,7 @@ Confederations2013::Application.routes.draw do
 
   resources :part_two_predicts do
     collection do 
+      get :overlook
       get :init
       get :initall
     end

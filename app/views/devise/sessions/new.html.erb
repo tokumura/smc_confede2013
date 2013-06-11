@@ -7,29 +7,40 @@
   end
 %>
 
-<div class="span8 offset1" style="color:#FFFFFF">
-  <h2>Sanei Confederations Cup 2013</h2>
-  <h4>〜 絶対に負けられない戦いが、そこにはある 〜</h4>
-</div>
-
-<div class="span4 offset7 well">
-
-
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div>
-    <%= f.label :account %>
-    <%= f.select :account, option_users, {} %>
+<% if User.check_user_agent(request) == "M" %>
+  <div class="span3" style="">
+    <h2>Sanei</h2>
+    <h2>Confederations</h2>
+    <h2>Cup 2013</h2>
+    <h5>絶対に負けられない戦いが</h5>
+    <h5>そこにはある</h5>
+  </div>
+<% else %>
+  <div class="span8 offset1" style="color:#FFFFFF">
+    <h2>Sanei Confederations Cup 2013</h2>
+    <h4>〜 絶対に負けられない戦いが、そこにはある 〜</h4>
   </div>
 
-  <div><%= f.label :password %>
-  <%= f.password_field :password %></div>
+  <div class="span4 offset7 well">
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%# f.check_box :remember_me %><%# f.label :remember_me %></div>
-  <% end -%>
 
-  <div><%= f.submit "Sign in", :class => 'btn btn-info' %></div>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <div>
+      <%= f.label :account %>
+      <%= f.select :account, option_users, {} %>
+    </div>
+
+    <div><%= f.label :password %>
+    <%= f.password_field :password %></div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div><%# f.check_box :remember_me %><%# f.label :remember_me %></div>
+    <% end -%>
+
+    <div><%= f.submit "Sign in", :class => 'btn btn-info' %></div>
+  <% end %>
 <% end %>
+
 
 <%# render :partial => "devise/shared/links" %>
 
