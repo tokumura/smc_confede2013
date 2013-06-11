@@ -6,33 +6,49 @@
       <thead>
         <tr>
           <td style="width:20%"></td>
-          <td style="width:30%; text-align:center;">Group A</td>
-          <td style="width:30%; text-align:center;">Group B</td>
+          <td colspan="4" style="width:30%; text-align:center;">Group A</td>
+          <td colspan="4" style="width:30%; text-align:center;">Group B</td>
           <td style="width:20%; text-align:center;">獲得ポイント</td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>これが現実</td>
-          <td>？？？・？？？</td>
-          <td>？？？・？？？</td>
-          <td>
-          </td>
+          <td></td>
+          <td style="text-align:center;"><img src="../img/brazil.jpg" style="text-align:center; width:30px; height:20px;"></td>
+          <td style="text-align:center;"><img src="../img/japan.jpg" style="width:30px; height:20px;"></td>
+          <td style="text-align:center;"><img src="../img/italia.jpg" style="width:30px; height:20px;"></td>
+          <td style="text-align:center;"><img src="../img/mexico.jpg" style="width:30px; height:20px;"></td>
+          <td style="text-align:center;"><img src="../img/spain.jpg" style="width:30px; height:20px;"></td>
+          <td style="text-align:center;"><img src="../img/uruguay.jpg" style="width:30px; height:20px;"></td>
+          <td style="text-align:center;"><img src="../img/tahichi.jpg" style="width:30px; height:20px;"></td>
+          <td style="text-align:center;"><img src="../img/nigeria.jpg" style="width:30px; height:20px;"></td>
+          <td></td>
         </tr>
+        <tr>
+          <td>これが現実</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <% countries = ["brazil", "japan", "italia", "mexico", "spain", "uruguay", "tahichi", "nigeria"]  %>
       <% @ptp.each do |p| %>
         <% user = User.find(p.user_id) %>
         <tr>
           <td><%=user.name%></td>
-          <td>
-            <%=Match.convert_country(p.team_a)%>・
-            <%=Match.convert_country(p.team_b)%>
-          </td>
-          <td>
-            <%=Match.convert_country(p.team_c)%>・
-            <%=Match.convert_country(p.team_d)%>
-          </td>
-          <td>
-          </td>
+          <% countries.each do |c| %>
+            <% if PartTwoPredict.get_your_predict_label(user.id, c)%>
+              <td style="text-align:center;"><i class="icon-star"></i></td>
+            <% else %>
+              <td></td>
+            <% end %>
+          <% end %>
+          <td></td>
         </tr>
       <% end %>
       </tbody>
