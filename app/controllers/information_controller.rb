@@ -4,6 +4,7 @@ class InformationController < ApplicationController
   # GET /information.json
   def index
     @information = Information.all
+    @information = Information.find(:all, :order => 'created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
