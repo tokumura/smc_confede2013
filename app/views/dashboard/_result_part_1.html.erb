@@ -11,10 +11,8 @@
   <tbody>
   <% @matches.each do |m| %>
     <% score = "　ー　" %>
-    <% if m.done %>
+    <% if m.game_status && m.game_status == "2" %>
       <% score = m.score_a.to_s + " ー " + m.score_b.to_s %>
-    <% elsif m.close_flg %>
-      <% score = "　ー　" %>
     <% end %>
     <tr>
       <td style="border-right: solid 1px #ddd;"><%=m.day%></td>
