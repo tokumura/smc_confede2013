@@ -21,7 +21,7 @@
     <% @part_one_predicts.each_with_index do |pop, i| %>
       <% m = Match.find_by_game_no(pop.game_no) %>
       <%=fields_for pop do |p| %>
-      <% if m.done %>
+      <% if m.done || m.close_flg %>
         <tr style="background-color:#DDDDDD">
       <% else %>
         <tr>
@@ -30,7 +30,7 @@
           <td><img src="img/<%=m.flag_a%>.jpg" style="widih:40px; height:30px"></td>
           <td style="vertical-align:middle;"><h4><%= m.team_a %></h4></td>
           <td style="vertical-align:middle;">
-            <% if m.done %>
+            <% if m.done || m.close_flg %>
               <%=p.select :score_a, @points, {}, :index => i, :style => "width:70px;", :disabled => true %>　ー　
               <%=p.select :score_b, @points, {}, :index => i, :style => "width:70px;", :disabled => true %>
             <% else %>

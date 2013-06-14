@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610045515) do
+ActiveRecord::Schema.define(:version => 20130614090147) do
 
   create_table "comments", :force => true do |t|
     t.integer  "information_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130610045515) do
     t.string   "day"
     t.boolean  "done"
     t.string   "closingday"
+    t.boolean  "close_flg"
   end
 
   create_table "news", :force => true do |t|

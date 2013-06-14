@@ -27,14 +27,14 @@
     <div class="span12">
       <h3>Group A</h3>
       <div class="field">
-        <%= f.select :team_a, @option_a, {} %>
-        <%= f.select :team_b, @option_a, {} %>
+        <%= f.select :team_a, @option_a, {}, :disabled => true %>
+        <%= f.select :team_b, @option_a, {}, :disabled => true %>
       </div>
 
       <h3>Group B</h3>
       <div class="field">
-        <%= f.select :team_c, @option_b, {} %>
-        <%= f.select :team_d, @option_b, {} %>
+        <%= f.select :team_c, @option_b, {}, :disabled => true %>
+        <%= f.select :team_d, @option_b, {}, :disabled => true %>
       </div>
       <br/>
       <div class="field">
