@@ -11,7 +11,7 @@
   <tbody>
   <% @matches.each do |m| %>
     <% score = "　ー　" %>
-    <% if m.game_status && m.game_status == "2" %>
+    <% if m.done %>
       <% score = m.score_a.to_s + " ー " + m.score_b.to_s %>
     <% end %>
     <tr>
