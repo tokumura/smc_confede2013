@@ -1,5 +1,5 @@
 body {
-  padding-top: 70px;
+  padding-top: 50px;
 }
 .signin {
   padding-top: 40px;
@@ -25,5 +25,4 @@ img {
 
 iframe {
   max-width: 100%;
-  height: auto;
 }

@@ -1,9 +1,6 @@
-<div style="height:500px; overflow:scroll;">
-  <h2>News</h2>
-  <ul>
-    <% @news.each_with_index do |n, j| %>
-      <li>&nbsp;<%=n.news_body%></li><br/>
-    <% end %>
-  </ul>
+<div style="height:70px; overflow:scroll;">
+  <% @news.each_with_index do |n, j| %>
+    ●&nbsp;<%=n.news_body%><br/>
+  <% end %>
 </div>
 
