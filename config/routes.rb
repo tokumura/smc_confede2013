@@ -1,5 +1,8 @@
 Confederations2013::Application.routes.draw do
 
+  resources :highlights
+
+
   resources :news do
     collection do
       get :initall
