@@ -4,7 +4,7 @@ class PartOnePredictsController < ApplicationController
   # GET /part_one_predicts.json
   def index
     @matches = Match.all
-    @part_one_predicts = PartOnePredict.find_all_by_user_id(current_user.id)
+    @part_one_predicts = PartOnePredict.find(:all, :conditions=> {:user_id => current_user.id}, :order => "game_no ASC")
     @points = (0..10).to_a
 
     respond_to do |format|
