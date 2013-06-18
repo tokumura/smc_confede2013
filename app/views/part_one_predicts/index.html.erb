@@ -31,6 +31,8 @@
           <td style="vertical-align:middle;"><h4><%= m.team_a %></h4></td>
           <td style="vertical-align:middle;">
             <% if m.game_status && m.game_status.to_i > 0 %>
+              <%=p.hidden_field :score_a, {:index => i} %>
+              <%=p.hidden_field :score_b, {:index => i} %>
               <%=p.select :score_a, @points, {}, :index => i, :style => "width:70px;", :disabled => true %>　ー　
               <%=p.select :score_b, @points, {}, :index => i, :style => "width:70px;", :disabled => true %>
             <% else %>
