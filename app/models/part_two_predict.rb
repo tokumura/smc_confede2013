@@ -28,4 +28,23 @@ class PartTwoPredict < ActiveRecord::Base
     end
     label
   end
+
+  def self.calc(predict)
+    point = 0
+    result_a = ["brazil", "italia"]
+    result_b = ["spain", "uruguay"]
+    if result_a.include?(predict.team_a)
+      point = point + 3
+    end
+    if result_a.include?(predict.team_b)
+      point = point + 3
+    end
+    if result_b.include?(predict.team_c)
+      point = point + 3
+    end
+    if result_b.include?(predict.team_d)
+      point = point + 3
+    end
+    point
+  end
 end

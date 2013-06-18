@@ -25,4 +25,14 @@ class User < ActiveRecord::Base
     end
     agent
   end
+
+  def self.calc_total_point
+    PartOnePredict.calc_pop
+    users = User.all
+    users.each do |u|
+      ptp_point = PartTwoPredict.calc(u.part_two_predict)
+      u.total_point = u.total_point + ptp_point
+      u.save
+    end
+  end
 end

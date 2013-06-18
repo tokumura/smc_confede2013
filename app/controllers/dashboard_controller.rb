@@ -25,6 +25,7 @@ class DashboardController < ApplicationController
       user.total_point = 0
     end
     PartOnePredict.calc_pop
+    #User.calc_total_point
     @users_ranked = User.order("total_point DESC")
 
     @news = News.order('created_at DESC')
