@@ -32,7 +32,7 @@ class PartTwoPredict < ActiveRecord::Base
   def self.calc(predict)
     point = 0
     result_a = ["brazil", "italia"]
-    result_b = ["spain", "uruguay"]
+    result_b = ["", ""]
     if result_a.include?(predict.team_a)
       point = point + 3
     end
