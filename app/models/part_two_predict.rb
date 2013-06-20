@@ -39,7 +39,6 @@ class PartTwoPredict < ActiveRecord::Base
     if result_a.include?(predict.team_b)
       point = point + 3
     end
-=begin
     if result_b.include?(predict.team_c)
       point = point + 3
     end
@@ -47,6 +46,5 @@ class PartTwoPredict < ActiveRecord::Base
       point = point + 3
     end
     point
-=end
   end
 end
