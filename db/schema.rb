@@ -11,99 +11,108 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617005045) do
+ActiveRecord::Schema.define(:version => 20130624003950) do
 
   create_table "comments", :force => true do |t|
-    t.integer  "information_id"
-    t.text     "comment_body"
-    t.integer  "comment_user_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer   "information_id"
+    t.text      "comment_body"
+    t.integer   "comment_user_id"
+    t.timestamp "created_at",      :null => false
+    t.timestamp "updated_at",      :null => false
   end
 
   create_table "highlights", :force => true do |t|
-    t.string   "title"
-    t.string   "video_url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "title"
+    t.string    "video_url"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "information", :force => true do |t|
-    t.string   "title"
-    t.text     "infobody"
-    t.string   "informant"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "title"
+    t.text      "infobody"
+    t.string    "informant"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "matches", :force => true do |t|
-    t.integer  "game_no"
-    t.string   "team_a"
-    t.integer  "score_a"
-    t.string   "team_b"
-    t.integer  "score_b"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "flag_a"
-    t.string   "flag_b"
-    t.string   "day"
-    t.boolean  "done"
-    t.string   "closingday"
-    t.boolean  "close_flg"
-    t.string   "game_status"
+    t.integer   "game_no"
+    t.string    "team_a"
+    t.integer   "score_a"
+    t.string    "team_b"
+    t.integer   "score_b"
+    t.timestamp "created_at",  :null => false
+    t.timestamp "updated_at",  :null => false
+    t.string    "flag_a"
+    t.string    "flag_b"
+    t.string    "day"
+    t.boolean   "done"
+    t.string    "closingday"
+    t.boolean   "close_flg"
+    t.string    "game_status"
   end
 
   create_table "news", :force => true do |t|
-    t.string   "news_body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "news_body"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "part_one_predicts", :force => true do |t|
-    t.integer  "game_no"
-    t.integer  "score_a"
-    t.integer  "score_b"
+    t.integer   "game_no"
+    t.integer   "score_a"
+    t.integer   "score_b"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
+    t.integer   "user_id"
+    t.string    "closingday"
+  end
+
+  create_table "part_three_predicts", :force => true do |t|
+    t.string   "team_a"
+    t.string   "team_b"
+    t.string   "team_c"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
-    t.string   "closingday"
   end
 
   create_table "part_two_predicts", :force => true do |t|
-    t.string   "team_a"
-    t.string   "team_b"
-    t.string   "team_c"
-    t.string   "team_d"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "team_a"
+    t.string    "team_b"
+    t.string    "team_c"
+    t.string    "team_d"
+    t.integer   "user_id"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "part_two_results", :force => true do |t|
-    t.string   "team_a"
-    t.string   "team_b"
-    t.string   "team_c"
-    t.string   "team_d"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "team_a"
+    t.string    "team_b"
+    t.string    "team_c"
+    t.string    "team_d"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                            :null => false
-    t.datetime "updated_at",                                            :null => false
-    t.string   "name"
-    t.string   "account"
-    t.integer  "total_point"
+    t.string    "email",                                 :default => "", :null => false
+    t.string    "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string    "reset_password_token"
+    t.timestamp "reset_password_sent_at"
+    t.timestamp "remember_created_at"
+    t.integer   "sign_in_count",                         :default => 0
+    t.timestamp "current_sign_in_at"
+    t.timestamp "last_sign_in_at"
+    t.string    "current_sign_in_ip"
+    t.string    "last_sign_in_ip"
+    t.timestamp "created_at",                                            :null => false
+    t.timestamp "updated_at",                                            :null => false
+    t.string    "name"
+    t.string    "account"
+    t.integer   "total_point"
   end
 
   add_index "users", ["name"], :name => "index_users_on_name"

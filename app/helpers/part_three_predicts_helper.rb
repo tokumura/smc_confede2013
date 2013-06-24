@@ -1,0 +1,2 @@
+module PartThreePredictsHelper
+end

@@ -38,7 +38,7 @@
                 <ul class="dropdown-menu" id="swatch-menu">
                   <li><%= link_to 'パート１：予選リーグを予想', part_one_predicts_path %></li>
                   <li><%= link_to 'パート２：決勝トーナメント進出を予想', edit_part_two_predict_path(user.part_two_predict.id) %></li>
-                  <li><%= link_to 'パート３：優勝・準優勝・３位を予想', '', :onclick => 'alert("近日開設！")' %></li>
+                  <li><%= link_to 'パート３：優勝・準優勝・３位を予想', edit_part_three_predict_path(user.part_three_predict.id) %></li>
                 </ul>
               </li>
               <li class="dropdown">

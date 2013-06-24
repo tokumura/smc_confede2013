@@ -1,5 +1,14 @@
 Confederations2013::Application.routes.draw do
 
+  resources :part_three_predicts do
+    collection do 
+      get :overlook
+      get :init
+      get :initall
+    end
+  end
+
+
   resources :highlights
 
 

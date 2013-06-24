@@ -1,0 +1,52 @@
+<% if notice %>
+  <div class="alert alert-success" align="center">
+    <%= notice %>
+    <img src="/img/mino.png" style="width:80px;height:80px;">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+  </div>
+<% end %>
+<div class="span12">
+
+<%= form_for(@part_three_predict) do |f| %>
+  <% if @part_three_predict.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@part_three_predict.errors.count, "error") %> prohibited this part_three_predict from being saved:</h2>
+
+      <ul>
+      <% @part_three_predict.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="span12">
+      <h2>予想パート３　優勝・準優勝・３位を予想せよ</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <h3>優勝</h3>
+      <div class="field">
+        <%= f.select :team_a, @options, {} %>
+      </div>
+
+      <h3>準優勝</h3>
+      <div class="field">
+        <%= f.select :team_b, @options, {} %>
+      </div>
+
+      <h3>３位</h3>
+      <div class="field">
+        <%= f.select :team_c, @options, {} %>
+      </div>
+      <br/>
+      <div class="field">
+        <%= f.submit 'これで勝負する！', :class => 'btn btn-info' %>
+      </div>
+    </div>
+
+<% end %>
+
+</div>
