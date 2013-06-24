@@ -1,0 +1,47 @@
+<h2>みんなの予想（優勝・準優勝・３位）</h2>
+
+<div class="row">
+  <div class="span12">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <td></td>
+          <td style="text-align:center; border-left: solid 1px #ddd;">結果</td>
+          <% @users.each do |user| %>
+            <td style="text-align:center; border-left: solid 1px #ddd; font-size:12px;"><%=user.name%></td>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><h4>優勝</h4></td>
+          <td></td>
+          <% @users.each do |user| %>
+            <td style="text-align:center; border-left: solid 1px #ddd;">
+              <img src="../img/<%=user.part_three_predict.team_a%>.jpg" style="width:60px;height:40px;">
+            </td>
+          <% end %>
+        </tr>
+        <tr>
+          <td><h4>準優勝</h4></td>
+          <td></td>
+          <% @users.each do |user| %>
+            <td style="text-align:center; border-left: solid 1px #ddd;">
+              <img src="../img/<%=user.part_three_predict.team_b%>.jpg" style="width:60px;height:40px;">
+            </td>
+          <% end %>
+        </tr>
+        <tr>
+          <td><h4>３位</h4></td>
+          <td></td>
+          <% @users.each do |user| %>
+            <td style="text-align:center; border-left: solid 1px #ddd;">
+              <img src="../img/<%=user.part_three_predict.team_c%>.jpg" style="width:60px;height:40px;">
+            </td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

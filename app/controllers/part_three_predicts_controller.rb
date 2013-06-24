@@ -11,6 +11,14 @@ class PartThreePredictsController < ApplicationController
     end
   end
 
+  def overlook
+    @users = User.order("total_point DESC")
+    @pthp = PartThreePredict.order("user_id")
+    respond_to do |format|
+      format.html # overlook.html.erb
+    end
+  end
+
   def initall
     PartThreePredict.destroy_all
     users = User.all
