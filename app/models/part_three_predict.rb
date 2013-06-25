@@ -1,5 +1,5 @@
 class PartThreePredict < ActiveRecord::Base
-  attr_accessible :team_a, :team_b, :team_c
+  attr_accessible :team_a, :team_b, :team_c, :score_a, :score_b, :score_c, :score_d, :score_e, :score_f
   belongs_to :user
 
   def self.init(user_id)

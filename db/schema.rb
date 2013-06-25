@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130624003950) do
+ActiveRecord::Schema.define(:version => 20130625011529) do
 
   create_table "comments", :force => true do |t|
     t.integer   "information_id"
@@ -76,6 +76,14 @@ ActiveRecord::Schema.define(:version => 20130624003950) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.integer  "score_a"
+    t.integer  "score_b"
+    t.integer  "score_c"
+    t.integer  "score_d"
+    t.integer  "score_e"
+    t.integer  "score_f"
+    t.integer  "score_g"
+    t.integer  "score_h"
   end
 
   create_table "part_two_predicts", :force => true do |t|

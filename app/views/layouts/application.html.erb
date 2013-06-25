@@ -38,7 +38,7 @@
                 <ul class="dropdown-menu" id="swatch-menu">
                   <li><%= link_to 'パート１：予選リーグを予想', part_one_predicts_path %></li>
                   <li><%= link_to 'パート２：決勝トーナメント進出を予想', edit_part_two_predict_path(user.part_two_predict.id) %></li>
-                  <li><%= link_to 'パート３：優勝・準優勝・３位を予想', edit_part_three_predict_path(user.part_three_predict.id) %></li>
+                  <li><%= link_to 'パート３：決勝トーナメント結果を予想', edit_part_three_predict_path(user.part_three_predict.id) %></li>
                 </ul>
               </li>
               <li class="dropdown">
@@ -46,7 +46,7 @@
                 <ul class="dropdown-menu" id="swatch-menu">
                   <li><%= link_to 'パート１：予選リーグ', overlook_part_one_predicts_path %></li>
                   <li><%= link_to 'パート２：決勝トーナメント進出', overlook_part_two_predicts_path %></li>
-                  <li><%= link_to 'パート３：優勝・準優勝・３位', overlook_part_three_predicts_path %></li>
+                  <li><%= link_to 'パート３：決勝トーナメント結果', overlook_part_three_predicts_path %></li>
                 </ul>
               </li>
               <li><%= link_to '３ちゃんねる', information_index_path %></li>
@@ -61,6 +61,7 @@
                 <% if current_user.account == "tokumura" %>
                   <li><%= link_to 'Match', matches_path %></li>
                   <li><%= link_to 'Part2 Result', part_two_results_path %></li>
+                  <li><%= link_to 'Admin', rails_admin_path %></li>
                 <% end %>
                 <li><%= link_to 'ログアウト', destroy_user_session_path, :method => :delete %></li>
               </ul>
