@@ -20,9 +20,16 @@
             <img src="../img/brazil.jpg" style="width:40px;height;30px;">&nbsp;-&nbsp;
             <img src="../img/uruguay.jpg" style="width:40px;height;30px;">
           </td>
-          <td style="text-align:center;">　-　</td>
+          <td style="text-align:center;">2 - 1</td>
           <% @users.each do |user| %>
-            <td style="text-align:center; border-left: solid 1px #ddd;">
+            <% hit_status = PartThreePredict.hit_status(user.id, 1) %>
+            <% if hit_status == "hit" %>
+              <td style="text-align:center; border-left: solid 1px #ddd; background:#98fb98">
+            <% elsif hit_status == "just" %>
+              <td style="text-align:center; border-left: solid 1px #ddd; background:#ff8e8e">
+            <% else %>
+              <td style="text-align:center; border-left: solid 1px #ddd;">
+            <% end %>
               <%= user.part_three_predict.score_a %>&nbsp;-&nbsp;
               <%= user.part_three_predict.score_b %>
             </td>
@@ -43,7 +50,7 @@
         </tr>
         <tr>
           <td style="text-align:center;">
-            3rd place match 
+            <img src="../img/uruguay.jpg" style="width:40px;height;30px;">&nbsp;-&nbsp;　　　
           </td>
           <td style="text-align:center;">　-　</td>
           <% @users.each do |user| %>
@@ -55,13 +62,23 @@
         </tr>
         <tr>
           <td style="text-align:center;">
-            final
+            <img src="../img/brazil.jpg" style="width:40px;height;30px;">&nbsp;-&nbsp;　　　
           </td>
           <td style="text-align:center;">　-　</td>
           <% @users.each do |user| %>
             <td style="text-align:center; border-left: solid 1px #ddd;">
-              <%= user.part_three_predict.score_e %>&nbsp;-&nbsp;
-              <%= user.part_three_predict.score_f %>
+              <%= user.part_three_predict.score_g %>&nbsp;-&nbsp;
+              <%= user.part_three_predict.score_h %>
+            </td>
+          <% end %>
+        </tr>
+        <tr>
+          <td style="text-align:center;" colspan="2">
+            全パートの合計ポイント
+          </td>
+          <% @users.each do |user| %>
+            <td style="text-align:center; border-left: solid 1px #ddd;">
+              <%= user.total_point %>
             </td>
           <% end %>
         </tr>

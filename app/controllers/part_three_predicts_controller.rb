@@ -12,6 +12,7 @@ class PartThreePredictsController < ApplicationController
   end
 
   def overlook
+    User.calc_total_point
     @users = User.order("total_point DESC")
     @pthp = PartThreePredict.order("user_id")
     respond_to do |format|
@@ -29,6 +30,11 @@ class PartThreePredictsController < ApplicationController
       pthp.team_c = ""
       pthp.save
     end
+    redirect_to part_three_predicts_path
+  end
+
+  def init_score
+    PartThreePredict.init_score
     redirect_to part_three_predicts_path
   end
 

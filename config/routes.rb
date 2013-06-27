@@ -5,6 +5,7 @@ Confederations2013::Application.routes.draw do
       get :overlook
       get :init
       get :initall
+      get :init_score
     end
   end
 

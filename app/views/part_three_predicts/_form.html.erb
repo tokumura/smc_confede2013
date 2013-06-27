@@ -31,27 +31,40 @@
       <h3>準決勝 第一戦</h3>
       <h3>
         <img src="../../img/brazil.jpg" style="width:60px;height:40px;">&nbsp;ブラジル
-        <%= f.number_field :score_a, :style => "width:80px;" %>&nbsp;ー&nbsp;
-        <%= f.number_field :score_b, :style => "width:80px;" %>
+        <%= f.number_field :score_a, :style => "width:80px;", :disabled => true %>&nbsp;ー&nbsp;
+        <%= f.number_field :score_b, :style => "width:80px;", :disabled => true %>
         ウルグアイ&nbsp;<img src="../../img/uruguay.jpg" style="width:60px;height:40px;">
       </h3>
+      <%= f.hidden_field :score_a %>
+      <%= f.hidden_field :score_b %>
       <br/>
 
       <h3>準決勝 第二戦</h3>
       <h3>
         <img src="../../img/spain.jpg" style="width:60px;height:40px;">&nbsp;スペイン
-        <%= f.number_field :score_c, :style => "width:80px;" %>&nbsp;ー&nbsp;
-        <%= f.number_field :score_d, :style => "width:80px;" %>
+        <%= f.number_field :score_c, :style => "width:80px;", :disabled => true %>&nbsp;ー&nbsp;
+        <%= f.number_field :score_d, :style => "width:80px;", :disabled => true %>
         イタリア&nbsp;<img src="../../img/italia.jpg" style="width:60px;height:40px;">
+      </h3>
+      <%= f.hidden_field :score_c %>
+      <%= f.hidden_field :score_d %>
+      <br/>
+
+      <h3>３位決定戦</h3>
+      <h3>
+        <img src="../../img/uruguay.jpg" style="width:60px;height:40px;">&nbsp;ウルグアイ
+        <%= f.number_field :score_e, :style => "width:80px;", :disabled => false %>&nbsp;ー&nbsp;
+        <%= f.number_field :score_f, :style => "width:80px;", :disabled => false %>
+        ？？？&nbsp;<img src="../../img/idontknow.jpg" style="width:60px;height:40px;">
+        　　　
       </h3>
       <br/>
 
       <h3>決勝戦</h3>
       <h3>
-        　　　
-        <img src="../../img/idontknow.jpg" style="width:60px;height:40px;">&nbsp;？？？
-        <%= f.number_field :score_e, :style => "width:80px;", :disabled => true %>&nbsp;ー&nbsp;
-        <%= f.number_field :score_f, :style => "width:80px;", :disabled => true %>
+        <img src="../../img/brazil.jpg" style="width:60px;height:40px;">&nbsp;ブラジル
+        <%= f.number_field :score_g, :style => "width:80px;", :disabled => false %>&nbsp;ー&nbsp;
+        <%= f.number_field :score_h, :style => "width:80px;", :disabled => false %>
         ？？？&nbsp;<img src="../../img/idontknow.jpg" style="width:60px;height:40px;">
         　　　
       </h3>

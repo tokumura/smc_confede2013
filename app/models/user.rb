@@ -35,5 +35,6 @@ class User < ActiveRecord::Base
       u.total_point = u.total_point + ptp_point
       u.save
     end
+    PartThreePredict.calc_pop
   end
 end
