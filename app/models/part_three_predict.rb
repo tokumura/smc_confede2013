@@ -33,11 +33,13 @@ class PartThreePredict < ActiveRecord::Base
     users.each do |u|
       point = 0
       pthp = u.part_three_predict
-      if pthp.score_a > pthp.score_b
-        point = point + 3
-      end
-      if pthp.score_a == 2 && pthp.score_b = 1
-        point = point + 3
+      if pthp.score_a && pthp.score_b
+        if pthp.score_a > pthp.score_b
+          point = point + 3
+        end
+        if pthp.score_a == 2 && pthp.score_b = 1
+          point = point + 3
+        end
       end
 
 =begin
@@ -73,10 +75,12 @@ class PartThreePredict < ActiveRecord::Base
     pthp = user.part_three_predict
 
     if match_no = 1
-      if pthp.score_a > pthp.score_b
-        status = "hit"
-        if pthp.score_a == 2 && pthp.score_b = 1
-          status = "just"
+      if pthp.score_a && pthp.score_b
+        if pthp.score_a > pthp.score_b
+          status = "hit"
+          if pthp.score_a == 2 && pthp.score_b = 1
+            status = "just"
+          end
         end
       end
 =begin
