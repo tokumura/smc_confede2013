@@ -31,23 +31,23 @@
       <h3>準決勝 第一戦</h3>
       <h3>
         <img src="../../img/brazil.jpg" style="width:60px;height:40px;">&nbsp;ブラジル
-        <%= f.number_field :score_a, :style => "width:80px;", :disabled => true %>&nbsp;ー&nbsp;
-        <%= f.number_field :score_b, :style => "width:80px;", :disabled => true %>
+        <%= f.number_field :score_a, :style => "width:80px;", :disabled => false%>&nbsp;ー&nbsp;
+        <%= f.number_field :score_b, :style => "width:80px;", :disabled => false%>
         ウルグアイ&nbsp;<img src="../../img/uruguay.jpg" style="width:60px;height:40px;">
       </h3>
-      <%= f.hidden_field :score_a %>
-      <%= f.hidden_field :score_b %>
+      <%# f.hidden_field :score_a %>
+      <%# f.hidden_field :score_b %>
       <br/>
 
       <h3>準決勝 第二戦</h3>
       <h3>
         <img src="../../img/spain.jpg" style="width:60px;height:40px;">&nbsp;スペイン
-        <%= f.number_field :score_c, :style => "width:80px;", :disabled => true %>&nbsp;ー&nbsp;
-        <%= f.number_field :score_d, :style => "width:80px;", :disabled => true %>
+        <%= f.number_field :score_c, :style => "width:80px;", :disabled => false%>&nbsp;ー&nbsp;
+        <%= f.number_field :score_d, :style => "width:80px;", :disabled => false%>
         イタリア&nbsp;<img src="../../img/italia.jpg" style="width:60px;height:40px;">
       </h3>
-      <%= f.hidden_field :score_c %>
-      <%= f.hidden_field :score_d %>
+      <%# f.hidden_field :score_c %>
+      <%# f.hidden_field :score_d %>
       <br/>
 
       <h3>３位決定戦</h3>
