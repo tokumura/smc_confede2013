@@ -37,19 +37,19 @@ class PartThreePredict < ActiveRecord::Base
         if pthp.score_a > pthp.score_b
           point = point + 3
         end
-        if pthp.score_a == 2 && pthp.score_b = 1
+        if pthp.score_a == 2 && pthp.score_b == 1
           point = point + 3
         end
       end
 
-=begin
-      if pthp.score_c > pthp.socre_d
+      if pthp.score_c > pthp.score_d
         point = point + 3
       end
-      if pthp.score_c == 2 && phtp.score_d = 1
+      if pthp.score_c == 1 && pthp.score_d == 0
         point = point + 3
       end
 
+=begin
       if pthp.score_e > pthp.socre_f
         point = point + 3
       end
@@ -74,23 +74,23 @@ class PartThreePredict < ActiveRecord::Base
     user = User.find(user_id)
     pthp = user.part_three_predict
 
-    if match_no = 1
+    if match_no == 1
       if pthp.score_a && pthp.score_b
         if pthp.score_a > pthp.score_b
           status = "hit"
-          if pthp.score_a == 2 && pthp.score_b = 1
+          if pthp.score_a == 2 && pthp.score_b == 1
             status = "just"
           end
         end
       end
-=begin
-    elsif match_no = 2
+    elsif match_no == 2
       if pthp.score_c > pthp.score_d
         status = "hit"
-        if pthp.score_c == 2 && phtp.score_d = 1
+        if pthp.score_c == 1 && pthp.score_d == 0
           status = "just"
         end
       end
+=begin
     elsif match_no = 3
       if pthp.score_e > pthp.score_f
         status = "hit"
