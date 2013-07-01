@@ -60,9 +60,16 @@
             <img src="../img/uruguay.jpg" style="width:40px;height;30px;">&nbsp;-&nbsp;
             <img src="../img/italia.jpg" style="width:40px;height;30px;">
           </td>
-          <td style="text-align:center;">　-　</td>
+          <td style="text-align:center;">2 - 3</td>
           <% @users.each do |user| %>
-            <td style="text-align:center; border-left: solid 1px #ddd;">
+            <% hit_status = PartThreePredict.hit_status(user.id, 3) %>
+            <% if hit_status == "hit" %>
+              <td style="text-align:center; border-left: solid 1px #ddd; background:#98fb98">
+            <% elsif hit_status == "just" %>
+              <td style="text-align:center; border-left: solid 1px #ddd; background:#ff8e8e">
+            <% else %>
+              <td style="text-align:center; border-left: solid 1px #ddd;">
+            <% end %>
               <%= user.part_three_predict.score_e %>&nbsp;-&nbsp;
               <%= user.part_three_predict.score_f %>
             </td>
@@ -73,9 +80,16 @@
             <img src="../img/brazil.jpg" style="width:40px;height;30px;">&nbsp;-&nbsp;
             <img src="../img/spain.jpg" style="width:40px;height;30px;">
           </td>
-          <td style="text-align:center;">　-　</td>
+          <td style="text-align:center;">3 - 0</td>
           <% @users.each do |user| %>
-            <td style="text-align:center; border-left: solid 1px #ddd;">
+            <% hit_status = PartThreePredict.hit_status(user.id, 4) %>
+            <% if hit_status == "hit" %>
+              <td style="text-align:center; border-left: solid 1px #ddd; background:#98fb98">
+            <% elsif hit_status == "just" %>
+              <td style="text-align:center; border-left: solid 1px #ddd; background:#ff8e8e">
+            <% else %>
+              <td style="text-align:center; border-left: solid 1px #ddd;">
+            <% end %>
               <%= user.part_three_predict.score_g %>&nbsp;-&nbsp;
               <%= user.part_three_predict.score_h %>
             </td>
@@ -108,7 +122,9 @@
       <tbody>
         <tr>
           <td><h4>優勝</h4></td>
-          <td></td>
+          <td style="text-align:center;">
+            <img src="../img/brazil.jpg" style="width:60px;height:40px;">
+          </td>
           <% @users.each do |user| %>
             <td style="text-align:center; border-left: solid 1px #ddd;">
               <% if user.part_three_predict.team_a != "" %>
@@ -119,7 +135,9 @@
         </tr>
         <tr>
           <td><h4>準優勝</h4></td>
-          <td></td>
+          <td style="text-align:center;">
+            <img src="../img/spain.jpg" style="width:60px;height:40px;">
+          </td>
           <% @users.each do |user| %>
             <td style="text-align:center; border-left: solid 1px #ddd;">
               <% if user.part_three_predict.team_b != "" %>
@@ -130,7 +148,9 @@
         </tr>
         <tr>
           <td><h4>３位</h4></td>
-          <td></td>
+          <td style="text-align:center;">
+            <img src="../img/italia.jpg" style="width:60px;height:40px;">
+          </td>
           <% @users.each do |user| %>
             <td style="text-align:center; border-left: solid 1px #ddd;">
               <% if user.part_three_predict.team_c != "" %>

@@ -49,21 +49,30 @@ class PartThreePredict < ActiveRecord::Base
         point = point + 3
       end
 
-=begin
-      if pthp.score_e > pthp.socre_f
+      if pthp.score_e < pthp.score_f
         point = point + 3
       end
-      if pthp.score_e == 2 && phtp.score_f = 1
+      if pthp.score_e == 2 && pthp.score_f == 3
         point = point + 3
       end
 
-      if pthp.score_g > pthp.socre_h
+      if pthp.score_g > pthp.score_h
         point = point + 3
       end
-      if pthp.score_g == 2 && phtp.score_h = 1
+      if pthp.score_g == 3 && pthp.score_h == 0
         point = point + 3
       end
-=end
+
+      if pthp.team_a == "brazil"
+        point = point + 9
+      end
+      if pthp.team_b == "spain"
+        point = point + 6
+      end
+      if pthp.team_c == "italia"
+        point = point + 6
+      end
+
       u.total_point = u.total_point + point
       u.save
     end
@@ -90,22 +99,20 @@ class PartThreePredict < ActiveRecord::Base
           status = "just"
         end
       end
-=begin
-    elsif match_no = 3
-      if pthp.score_e > pthp.score_f
+    elsif match_no == 3
+      if pthp.score_e < pthp.score_f
         status = "hit"
-        if pthp.score_e == 2 && phtp.score_f = 1
+        if pthp.score_e == 2 && pthp.score_f == 3
           status = "just"
         end
       end
-    elsif match_no = 4
+    elsif match_no == 4
       if pthp.score_g > pthp.score_h
         status = "hit"
-        if pthp.score_g == 2 && phtp.score_h = 1
+        if pthp.score_g == 3 && pthp.score_h == 0
           status = "just"
         end
       end
-=end
     end
     
     status
